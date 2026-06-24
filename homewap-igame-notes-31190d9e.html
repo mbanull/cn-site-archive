@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 杂志专题 | homewap-igame.com</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fcedda 0%, #f7d9b3 50%, #f2c99e 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #3a2a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrap {
+      max-width: 840px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* 首页横幅 — 杂志风格大标题 */
+    .hero-banner {
+      background: linear-gradient(112deg, #b87c4b 0%, #dba272 70%, #eec49e 100%);
+      border-radius: 2rem 2rem 1rem 1rem;
+      padding: 2.8rem 2.2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 30px -10px rgba(120, 70, 30, 0.25);
+      transition: box-shadow 0.2s;
+      text-align: center;
+    }
+
+    .hero-banner h1 {
+      font-size: 3.2rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: #fef6eb;
+      text-shadow: 0 2px 4px rgba(70, 40, 10, 0.2);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-banner .subhead {
+      font-size: 1.1rem;
+      color: #f9e7d0;
+      letter-spacing: 0.3px;
+      border-top: 1px solid rgba(255, 237, 210, 0.4);
+      display: inline-block;
+      padding-top: 0.6rem;
+      margin-top: 0.25rem;
+    }
+
+    /* 白色卡片 */
+    .card {
+      background: rgba(255, 250, 240, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 18px rgba(130, 80, 40, 0.08);
+      border: 1px solid rgba(255, 235, 210, 0.5);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(110, 65, 30, 0.12);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #4e2e16;
+      border-left: 5px solid #ca9a6b;
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      margin-bottom: 0.9rem;
+      font-size: 1rem;
+      color: #2f2012;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 圆角按钮感链接 —— 只在 a 标签是句子内链接时使用 */
+    a {
+      text-decoration: none;
+      color: #9b6b3c;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    a:hover {
+      color: #6b4420;
+      border-bottom-color: #b8804e;
+    }
+
+    /* 特别修饰：文章中作为重点词的链接采用圆角按钮感的样式 */
+    .btn-link {
+      display: inline-block;
+      background: transparent;
+      padding: 0.2rem 0.8rem 0.25rem 0.8rem;
+      border-radius: 30px;
+      border: 1px solid #ca9a6b;
+      color: #6b4420;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s, box-shadow 0.15s;
+      text-decoration: none;
+      border-bottom: none; 
+    }
+
+    .btn-link:hover {
+      background: #ca9a6b;
+      color: #fef6eb;
+      box-shadow: 0 4px 10px rgba(180, 110, 40, 0.2);
+      border-color: #b87c4b;
+    }
+
+    /* FAQ 摘要小卡片 */
+    .faq-mini {
+      background: rgba(235, 215, 185, 0.25);
+      border-radius: 20px;
+      padding: 1.2rem 1.8rem;
+      margin: 1.5rem 0 0.5rem 0;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #3a2a1a;
+      cursor: pointer;
+      padding: 0.2rem 0;
+      outline: none;
+    }
+
+    .faq-mini p {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      color: #3d2b17;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      margin-top: 2.8rem;
+      padding: 1.6rem 0.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(140, 90, 45, 0.15);
+      font-size: 0.95rem;
+      color: #4d3a24;
+    }
+
+    .footer-note a {
+      font-weight: 500;
+      color: #7a5532;
+    }
+
+    .footer-note a:hover {
+      color: #4e2e16;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .hero-banner {
+        padding: 1.8rem 1.2rem;
+      }
+      .hero-banner h1 {
+        font-size: 2.2rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .card-title {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-banner h1 {
+        font-size: 1.8rem;
+      }
+      .btn-link {
+        padding: 0.1rem 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 首页横幅 -->
+  <header class="hero-banner">
+    <h1>爱游戏 · 常回廊</h1>
+    <div class="subhead">数字栖息 · 持续关注</div>
+  </header>
+
+  <!-- 背景说明：再次访问的缘由 -->
+  <section class="card">
+    <h2 class="card-title">再次访问的理由</h2>
+    <p>在信息流快速翻页的今天，真正值得反复打开的平台并不多。<a href="https://homewap-igame.com" class="btn-link">爱游戏</a> 不追逐热点泡沫，而是持续提供结构清晰的游戏资讯与内容聚合。无论你是在午休间隙刷新信息，还是在周末深度浏览，这里总能找到不浮夸的阅读节奏。</p>
+    <p>收藏一个站点，就是收藏一种信息习惯。<strong>把首页加入书签</strong>，让每次回来都像翻开一本定期更新的游戏杂志。</p>
+  </section>
+
+  <!-- 三段自然介绍：从收藏、关注、场景切入 -->
+  <section class="card">
+    <h2 class="card-title">收藏 · 关注 · 日常</h2>
+    <p><strong>▎收藏即约定</strong> —— 将 <a href="https://homewap-igame.com">爱游戏</a> 放入浏览器书签栏或移动端主屏幕，它便会成为你数字生活里的一个安静锚点。不需要记住复杂域名，不必担心内容沉没在算法推荐之外。</p>
+    <p><strong>▎持续关注的价值</strong> —— 平台内容定期更新，从独立游戏推荐到经典作品回顾，从开发视角到玩家随笔，每期都保持独立选题与编辑语感。不重复、不敷衍，适合愿意阅读超过140字的你。</p>
+    <p><strong>▎何时打开它？</strong> 通勤碎片时间、午休间隙、周末午后、深夜需要一段不被打扰的阅读时。没有弹窗干扰，没有自动播放视频，页面加载迅速，聚焦于文字与影像的朴素呈现。</p>
+  </section>
+
+  <!-- FAQ 摘要小模块 + 衔接提示 -->
+  <section class="card">
+    <h2 class="card-title">常见念头 · 快速回应</h2>
+    <details class="faq-mini">
+      <summary>这个站点适合什么样的读者？</summary>
+      <p>适合对游戏文化有内在兴趣、不满足于快讯标题的读者。内容涵盖观点、回顾、专题以及审美向的游戏报道，偏向杂志式叙事，而非纯攻略或短讯。</p>
+    </details>
+    <details class="faq-mini">
+      <summary>内容更新频率如何？是否稳定？</summary>
+      <p>保持有节奏的更新周期，不追求日更数量，而是保障每篇的完成度与可读性。建议每隔一段时间回来看看，总能发现新的选题。</p>
+    </details>
+    <p style="margin-top: 1.2rem; font-size: 0.95rem; color: #4d3620;">
+      如果你已经很久没有静心浏览一个游戏网站，不妨试试回到 <a href="https://homewap-igame.com" style="border-bottom: 1px dashed #b8804e;">爱游戏</a> —— 不需要注册，不需要关注弹窗，只是阅读本身。
+    </p>
+  </section>
+
+  <!-- 页尾访问提示 -->
+  <footer class="footer-note">
+    <p>杂志专题 · 常访之选</p>
+    <p style="margin-top: 0.2rem;">
+      <a href="https://homewap-igame.com" style="font-weight: 500;">爱游戏</a> 
+      — 再次收藏，继续阅读
+    </p>
+    <p style="font-size: 0.8rem; margin-top: 0.8rem; opacity: 0.65;">homewap-igame.com  ·  简洁  ·  持续</p>
+  </footer>
+
+</div>
+</body>
+</html>
