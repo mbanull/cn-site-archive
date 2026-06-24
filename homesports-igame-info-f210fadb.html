@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 站点故事</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafaf9;
+            color: #2c2c2c;
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            line-height: 1.8;
+            padding: 2rem 1.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* 开篇短句 – 像书的一行注脚 */
+        .opening-line {
+            margin-top: 2.5rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            color: #7f7f7e;
+            border-left: 3px solid #d4a373;
+            padding-left: 1.2rem;
+            font-style: italic;
+        }
+
+        /* 主标题 – 干净，克制的存在感 */
+        .page-title {
+            margin: 2rem 0 1.8rem;
+            font-weight: 400;
+            font-size: 2.3rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            color: #1f1f1f;
+            border-bottom: 1px solid #e5e2db;
+            padding-bottom: 0.6rem;
+        }
+
+        .page-title small {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #8f8d89;
+            margin-left: 0.75rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* 承接叙述段落 */
+        .narrative {
+            font-size: 1rem;
+            color: #3b3b3a;
+            margin: 1.8rem 0 2rem;
+            text-align: left;
+        }
+
+        .narrative p {
+            margin-bottom: 1.5rem;
+        }
+
+        .narrative a {
+            color: #8f5e3b;
+            text-decoration: none;
+            border-bottom: 1px solid #d7c3b0;
+            transition: border-color 0.2s, color 0.2s;
+            font-style: normal;
+        }
+
+        .narrative a:hover {
+            border-bottom-color: #8f5e3b;
+            color: #543e2a;
+        }
+
+        /* 特点列表 – 温和的卡片感 */
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            margin: 2.5rem 0 2.2rem;
+        }
+
+        .feature-item {
+            background: #fffffffc;
+            border: 1px solid #ece9e4;
+            border-radius: 0;
+            padding: 1.3rem 1.6rem;
+            transition: background 0.2s, border-color 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .feature-item:hover {
+            background: #f7f5f0;
+            border-color: #d4c9bc;
+        }
+
+        .feature-item h3 {
+            font-weight: 400;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+            color: #2b2b2b;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-item h3::before {
+            content: "— ";
+            color: #b7a48f;
+            font-weight: 300;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #5b5a57;
+            line-height: 1.7;
+            margin-top: 0.2rem;
+        }
+
+        /* 温和的引用 / 场景标注 */
+        .quiet-quote {
+            margin: 2.8rem 0 2rem;
+            padding: 1.2rem 0 0.8rem;
+            border-top: 1px solid #e8e3db;
+            font-size: 0.95rem;
+            color: #63615c;
+            font-style: normal;
+        }
+
+        .quiet-quote em {
+            font-style: italic;
+            color: #7d6b58;
+        }
+
+        .quiet-quote strong {
+            font-weight: 400;
+            color: #3f3e3b;
+        }
+
+        /* FAQ 摘要 – 极简，不占篇幅 */
+        .faq-mini {
+            margin: 2.5rem 0 2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .faq-mini li {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #e2ddd5;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-mini li span {
+            display: inline-block;
+            font-weight: 400;
+            color: #4a413a;
+            margin-right: 0.5rem;
+        }
+
+        .faq-mini li span::after {
+            content: " ···";
+            color: #b6aaa0;
+            letter-spacing: 1px;
+        }
+
+        .faq-mini li .answer-snip {
+            color: #6a6661;
+            font-style: normal;
+        }
+
+        /* 温和结尾 – 像合上一本小书 */
+        .closing {
+            margin-top: 3.2rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e5e2db;
+            font-size: 0.9rem;
+            color: #7f7c77;
+            text-align: left;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+        }
+
+        .closing a {
+            color: #7a604a;
+            border-bottom: 1px solid #cdbfb0;
+            text-decoration: none;
+        }
+
+        .closing a:hover {
+            border-bottom-color: #7a604a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .feature-item {
+                padding: 1rem 1.2rem;
+            }
+
+            .opening-line {
+                font-size: 1rem;
+                padding-left: 1rem;
+            }
+        }
+
+        /* 不可见的创作种子占位 – 仅用于变化 */
+        .seed-note {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 开场短句 -->
+    <div class="opening-line">
+        一个网站的开始，往往只是一段安静的叙述。
+    </div>
+
+    <!-- 主标题 -->
+    <h1 class="page-title">
+        爱游戏
+        <small>· 站点笔记</small>
+    </h1>
+
+    <!-- 承接段落：从站点介绍与可信说明的角度 -->
+    <div class="narrative">
+        <p>
+            在互联网的角落，有些站点并非为了喧哗而生。<strong>爱游戏</strong>便是这样一处存在。
+            它不标榜「最全」「最新」，也没有掠夺注意力的横幅与弹窗。
+            从第一次打开页面起，你便能感觉到一种收敛的节奏——内容被规整地陈列，
+            每一项更新都带着编辑者的手温。这里没有算法投喂的焦虑，
+            只有对游戏本来的关注：玩法、设计、以及那些值得被记住的细节。
+        </p>
+        <p>
+            站点的可信，往往藏在日常的维护里。没有夸张的推荐语，
+            没有一夜暴富的攻略许诺；每一条信息都标注了来源或测试版本，
+            错了就修正，过时就归档。你可以把这里当作一个安静的参考点——
+            当你想确认某款老作品的机制，或者寻找一个不打扰人的社区氛围时，
+            <a href="https://homesports-igame.com">爱游戏</a>还在那里，用它的方式整理着碎片。
+        </p>
+    </div>
+
+    <!-- 特点列表：温和叙述式 -->
+    <div class="feature-list">
+        <div class="feature-item">
+            <h3>不追赶热点的档案感</h3>
+            <p>比起首发新闻，更在意内容是否经得起回看。专题与回顾占了相当比重，它们像书架上的旧册子，随时等人翻开。</p>
+        </div>
+        <div class="feature-item">
+            <h3>克制的交互与版式</h3>
+            <p>没有满屏动效，没有自动播放。字体、间距、颜色都保持在低对比度的舒适区，让阅读回归阅读本身。</p>
+        </div>
+        <div class="feature-item">
+            <h3>可追溯的编辑痕迹</h3>
+            <p>每一篇更新都带有日期与修改备注，偶尔还会附上编辑短评。这种不完美的诚实，反而成了信任的锚点。</p>
+        </div>
+    </div>
+
+    <!-- 场景标注 / 温和引用 -->
+    <div class="quiet-quote">
+        <em>“也许你只是偶然路过，想查一个多年前的关卡名称，或者单纯想找一个不吵的地方待一会儿。”</em><br>
+        <strong>—— 站点的日常，大概就是这样被需要着。</strong>
+    </div>
+
+    <!-- FAQ 摘要 – 不是问答，而是片段式澄清 -->
+    <ul class="faq-mini">
+        <li>
+            <span>关于内容来源</span>
+            <span class="answer-snip">编辑整理 + 玩家投稿，每一篇均标注参考。没有AI批量生成，也没有洗稿拼凑。</span>
+        </li>
+        <li>
+            <span>关于更新频率</span>
+            <span class="answer-snip">不追求日更。每周 2–3 次，有时更少。信息密度比数量更重要。</span>
+        </li>
+        <li>
+            <span>关于社区氛围</span>
+            <span class="answer-snip">没有强制登录，没有积分商城。评论开放但保留筛选权，反对无意义的争吵。</span>
+        </li>
+    </ul>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        如果你也认同「慢一点的内容同样值得被阅读」，或许可以记下这个地方。
+        下一次当你需要一个安静的起点，不妨回来看看<a href="https://homesports-igame.com">爱游戏</a>。
+        它不会用推送打扰你，但会一直保持更新，保持整洁，保持一种对游戏不疾不徐的喜欢。
+    </div>
+
+    <!-- 仅用于变化，不显示 -->
+    <div class="seed-note">种子: 0a60261b07cd04a2</div>
+
+</div>
+</body>
+</html>
